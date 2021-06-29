@@ -1,0 +1,200 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+
+api_token <- Sys.getenv("BUNDESTAG_API")
+library(tidybundestag)
+```
+
+# tidybundestag
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+`tidybundestag` wraps up the official API of the German Bundestag in R. 
+
+It can be used to retrieve data on: 
+
+* activities (aktivität) 
+* "Drucksachen" 
+* Members of the Bundestag
+* Plenary protocols
+* Parliamentary processes (Vorgänge)
+
+For more information on the API, please visit: [https://dip.bundestag.de/documents/informationsblatt_zur_dip_api_v01.pdf](https://dip.bundestag.de/documents/informationsblatt_zur_dip_api_v01.pdf)
+
+## Installation
+
+You can install the latest version of tidybundestag from Github with 
+
+``` r
+remotes::install_github("benjaminguinaudeau/tidybundestag")
+```
+
+## Example
+
+Before accessing the data, you need to obtain an [API-Key](https://dip.bundestag.de/%C3%BCber-dip/hilfe/api#content).
+
+```{r, eval = F}
+library(tidybundestag)
+api_token <- "..."
+```
+
+
+Once you have an api-key, you can start accessing data:
+
+```{r}
+tidybt_vorgang(n_max = 100, api_token = api_token) %>%
+  dplyr::glimpse()
+```
+
+## Endpoints
+
+The API of the Bundestag proposes 8 different endpoints. 
+
+`tidybundestag` always returns a tibble where each row represents one unit (i.e. one process, one plenary, one questions, one person, etc...). The original json-structure is embedded in the tibble as a list-column, that can be easily handled with [`tidyr`](https://tidyr.tidyverse.org/reference/nest.html).
+
+### Activities
+
+```{r}
+tidybt_aktivitaet(n_max = 100, api_token = api_token) %>%
+  dplyr::glimpse()
+```
+
+### Drucksache
+
+```{r}
+tidybt_drucksache(n_max = 100, api_token = api_token) %>%
+  dplyr::glimpse()
+```
+
+### Drucksache-Text
+
+```{r}
+tidybt_drucksache_text(n_max = 20, api_token = api_token) %>%
+  dplyr::glimpse()
+```
+
+### Person
+
+```{r}
+tidybt_person(n_max = 20, api_token = api_token) %>%
+  dplyr::glimpse()
+```
+
+
+### Plenarprotokoll
+
+```{r}
+tidybt_plenarprotokoll(n_max = 100, api_token = api_token) %>%
+  dplyr::glimpse()
+```
+
+### Text of plenarprotokoll
+
+```{r}
+tidybt_plenarprotokoll_text(n_max = 20, api_token = api_token) %>%
+  dplyr::glimpse()
+```
+
+### Vorgang
+
+```{r}
+tidybt_vorgang(n_max = 100, api_token = api_token) %>%
+  dplyr::glimpse()
+```
+
+### Vorgangsposition
+
+```{r}
+tidybt_vorgangsposition(n_max = 100, api_token = api_token) %>%
+  dplyr::glimpse()
+```
+
+## Query Parameter
+
++ id: id of the desired unit
++ start_date: First day of the desired period (character with YYYY/MM/DD)
++ end_date: Last day of the desired period (character with YYYY/MM/DD)
++ drucksache: Drucksache number of the desired unit
++ plenarprotokoll: Id of a plenary protocol related to the desired unit
++ vorgang: Id of a process related to the desired unit 
++ zuordnung: Attribution to a given institution (one of `c('BT', 'BR', 'BV', 'EK'))
+
+
+### id
+
+```{r}
+tidybt_vorgang(id = "279665", api_token = api_token)
+```
+
+### start_date
+
+```{r}
+tidybt_vorgang(n_max = 100, start_date = "2021-01-01", api_token = api_token) %>%
+  dplyr::glimpse()
+```
+
+### end_date
+
+```{r}
+tidybt_drucksache(n_max = 100, end_date = "2020-01-01", api_token = api_token) %>%
+  dplyr::glimpse()
+```
+
+
+
+### drucksache
+
+```{r}
+tidybt_vorgang(drucksache = 68852, api_token = api_token) %>%
+  dplyr::glimpse()
+```
+
+### plenarprotokoll
+
+```{r}
+tidybt_vorgang(plenarprotokoll = 908, api_token = api_token) %>%
+  dplyr::glimpse()
+```
+
+
+### zuordnung
+
+```{r}
+tidybt_plenarprotokoll(n_max = 100, zuordnung = "BT", api_token = api_token) %>%
+  dplyr::glimpse()
+```
+
+## Unnest list-columns
+
+```{r}
+members <- tidybt_person(n_max = 200, api_token = api_token) %>%
+  dplyr::glimpse()
+
+roles <- members %>%
+  tidyr::unnest(person_roles, names_sep = "_", keep_empty = T) %>%
+  dplyr::glimpse()
+```
+
+
+```{r}
+roles %>%
+  dplyr::filter(!is.na(person_roles_funktion)) %>%
+  dplyr::count(person_roles_funktion) %>%
+  ggplot2::ggplot(ggplot2::aes(person_roles_funktion, n)) +
+  ggplot2::geom_col() +
+  ggplot2::coord_flip()
+  
+```
+
