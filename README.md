@@ -40,16 +40,17 @@ api_token <- "..."
 Once you have an api-key, you can start accessing data:
 
 ``` r
-tidybt_vorgang(n_max = 50, api_token = api_token) %>%
+tidybt_vorgang(n_max = 100, api_token = api_token) %>%
   dplyr::glimpse()
-#> ✓ Total number of retrievable units: 277990 (Maximum set to 50)
+#> ✓ Total number of retrievable units: 277990 (Maximum set to 100)
 #> 
 #> Retrieved 0 documents
+#> Retrieved 50 documents
 #> Done
-#> ✓ Successfully retrieved 50 documents
+#> ✓ Successfully retrieved 100 documents
 #> Done
-#> Rows: 50
-#> Columns: 13
+#> Rows: 100
+#> Columns: 15
 #> $ id                        <chr> "279665", "279754", "279753", "279752", "279…
 #> $ beratungsstand            <chr> "Noch nicht beraten", "Noch nicht beantworte…
 #> $ vorgangstyp               <chr> "Gesetzgebung", "Kleine Anfrage", "Kleine An…
@@ -63,6 +64,8 @@ tidybt_vorgang(n_max = 50, api_token = api_token) %>%
 #> $ titel                     <chr> "Gesetz zur abschließenden Klärung der Rückg…
 #> $ deskriptor                <list> [<tbl_df[1 x 3]>], [<tbl_df[5 x 3]>], <NULL…
 #> $ abstract                  <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+#> $ ratsdok                   <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+#> $ kom                       <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
 ```
 
 ## Endpoints
@@ -78,15 +81,16 @@ that can be easily handled with
 ### Activities
 
 ``` r
-tidybt_aktivitaet(n_max = 50, api_token = api_token) %>%
+tidybt_aktivitaet(n_max = 100, api_token = api_token) %>%
   dplyr::glimpse()
-#> ✓ Total number of retrievable units: 1545522 (Maximum set to 50)
+#> ✓ Total number of retrievable units: 1545522 (Maximum set to 100)
 #> 
 #> Retrieved 0 documents
+#> Retrieved 50 documents
 #> Done
-#> ✓ Successfully retrieved 50 documents
+#> ✓ Successfully retrieved 100 documents
 #> Done
-#> Rows: 50
+#> Rows: 100
 #> Columns: 10
 #> $ id                   <chr> "1566309", "1566308", "1566307", "1566306", "1566…
 #> $ aktivitaetsart       <chr> "Gesetzentwurf", "Gesetzentwurf", "Gesetzentwurf"…
@@ -103,15 +107,16 @@ tidybt_aktivitaet(n_max = 50, api_token = api_token) %>%
 ### Drucksache
 
 ``` r
-tidybt_drucksache(n_max = 50, api_token = api_token) %>%
+tidybt_drucksache(n_max = 100, api_token = api_token) %>%
   dplyr::glimpse()
-#> ✓ Total number of retrievable units: 255059 (Maximum set to 50)
+#> ✓ Total number of retrievable units: 255059 (Maximum set to 100)
 #> 
 #> Retrieved 0 documents
+#> Retrieved 50 documents
 #> Done
-#> ✓ Successfully retrieved 50 documents
+#> ✓ Successfully retrieved 100 documents
 #> Done
-#> Rows: 50
+#> Rows: 100
 #> Columns: 16
 #> $ id                   <chr> "256102", "256317", "256316", "256315", "256314",…
 #> $ drucksachetyp        <chr> "Gesetzentwurf", "Kleine Anfrage", "Kleine Anfrag…
@@ -189,15 +194,16 @@ tidybt_person(n_max = 20, api_token = api_token) %>%
 ### Plenarprotokoll
 
 ``` r
-tidybt_plenarprotokoll(n_max = 50, api_token = api_token) %>%
+tidybt_plenarprotokoll(n_max = 100, api_token = api_token) %>%
   dplyr::glimpse()
-#> ✓ Total number of retrievable units: 5416 (Maximum set to 50)
+#> ✓ Total number of retrievable units: 5416 (Maximum set to 100)
 #> 
 #> Retrieved 0 documents
+#> Retrieved 50 documents
 #> Done
-#> ✓ Successfully retrieved 50 documents
+#> ✓ Successfully retrieved 100 documents
 #> Done
-#> Rows: 50
+#> Rows: 100
 #> Columns: 12
 #> $ id                   <chr> "5426", "5425", "5424", "5423", "5422", "5421", "…
 #> $ dokumentart          <chr> "Plenarprotokoll", "Plenarprotokoll", "Plenarprot…
@@ -243,16 +249,17 @@ tidybt_plenarprotokoll_text(n_max = 20, api_token = api_token) %>%
 ### Vorgang
 
 ``` r
-tidybt_vorgang(n_max = 50, api_token = api_token) %>%
+tidybt_vorgang(n_max = 100, api_token = api_token) %>%
   dplyr::glimpse()
-#> ✓ Total number of retrievable units: 277990 (Maximum set to 50)
+#> ✓ Total number of retrievable units: 277990 (Maximum set to 100)
 #> 
 #> Retrieved 0 documents
+#> Retrieved 50 documents
 #> Done
-#> ✓ Successfully retrieved 50 documents
+#> ✓ Successfully retrieved 100 documents
 #> Done
-#> Rows: 50
-#> Columns: 13
+#> Rows: 100
+#> Columns: 15
 #> $ id                        <chr> "279665", "279754", "279753", "279752", "279…
 #> $ beratungsstand            <chr> "Noch nicht beraten", "Noch nicht beantworte…
 #> $ vorgangstyp               <chr> "Gesetzgebung", "Kleine Anfrage", "Kleine An…
@@ -266,21 +273,24 @@ tidybt_vorgang(n_max = 50, api_token = api_token) %>%
 #> $ titel                     <chr> "Gesetz zur abschließenden Klärung der Rückg…
 #> $ deskriptor                <list> [<tbl_df[1 x 3]>], [<tbl_df[5 x 3]>], <NULL…
 #> $ abstract                  <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+#> $ ratsdok                   <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+#> $ kom                       <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
 ```
 
 ### Vorgangsposition
 
 ``` r
-tidybt_vorgangsposition(n_max = 50, api_token = api_token) %>%
+tidybt_vorgangsposition(n_max = 100, api_token = api_token) %>%
   dplyr::glimpse()
-#> ✓ Total number of retrievable units: 595342 (Maximum set to 50)
+#> ✓ Total number of retrievable units: 595342 (Maximum set to 100)
 #> 
 #> Retrieved 0 documents
+#> Retrieved 50 documents
 #> Done
-#> ✓ Successfully retrieved 50 documents
+#> ✓ Successfully retrieved 100 documents
 #> Done
-#> Rows: 50
-#> Columns: 17
+#> Rows: 100
+#> Columns: 21
 #> $ id                 <chr> "1", "10", "100", "10001", "10002", "10006", "10008…
 #> $ vorgangsposition   <chr> "Antrag zur Weitergeltung der Geschäftsordnung", "U…
 #> $ zuordnung          <chr> "BT", "BR", "BT", "BT", "BT", "BT", "BT", "BT", "BT…
@@ -298,6 +308,10 @@ tidybt_vorgangsposition(n_max = 50, api_token = api_token) %>%
 #> $ urheber            <list> [<tbl_df[5 x 3]>], [<tbl_df[1 x 3]>], [<tbl_df[5 x…
 #> $ ueberweisung       <list> <NULL>, [<tbl_df[1 x 3]>], <NULL>, <NULL>, <NULL>,…
 #> $ aktivitaet_anzeige <list> <NULL>, <NULL>, <NULL>, [<tbl_df[4 x 3]>], <NULL>,…
+#> $ ressort            <list> <NULL>, <NULL>, <NULL>, <NULL>, <NULL>, <NULL>, <N…
+#> $ beschlussfassung   <list> <NULL>, <NULL>, <NULL>, <NULL>, <NULL>, <NULL>, <N…
+#> $ ratsdok            <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+#> $ kom                <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
 ```
 
 ## Query Parameter
@@ -336,16 +350,17 @@ tidybt_vorgang(id = "279665", api_token = api_token)
 ### start\_date
 
 ``` r
-tidybt_vorgang(n_max = 50, start_date = "2021-01-01", api_token = api_token) %>%
+tidybt_vorgang(n_max = 100, start_date = "2021-01-01", api_token = api_token) %>%
   dplyr::glimpse()
-#> ✓ Total number of retrievable units: 8593 (Maximum set to 50)
+#> ✓ Total number of retrievable units: 8593 (Maximum set to 100)
 #> 
 #> Retrieved 0 documents
+#> Retrieved 50 documents
 #> Done
-#> ✓ Successfully retrieved 50 documents
+#> ✓ Successfully retrieved 100 documents
 #> Done
-#> Rows: 50
-#> Columns: 13
+#> Rows: 100
+#> Columns: 15
 #> $ id                        <chr> "279665", "279754", "279753", "279752", "279…
 #> $ beratungsstand            <chr> "Noch nicht beraten", "Noch nicht beantworte…
 #> $ vorgangstyp               <chr> "Gesetzgebung", "Kleine Anfrage", "Kleine An…
@@ -359,20 +374,23 @@ tidybt_vorgang(n_max = 50, start_date = "2021-01-01", api_token = api_token) %>%
 #> $ titel                     <chr> "Gesetz zur abschließenden Klärung der Rückg…
 #> $ deskriptor                <list> [<tbl_df[1 x 3]>], [<tbl_df[5 x 3]>], <NULL…
 #> $ abstract                  <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+#> $ ratsdok                   <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+#> $ kom                       <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
 ```
 
 ### end\_date
 
 ``` r
-tidybt_drucksache(n_max = 50, end_date = "2020-01-01", api_token = api_token) %>%
+tidybt_drucksache(n_max = 100, end_date = "2020-01-01", api_token = api_token) %>%
   dplyr::glimpse()
-#> ✓ Total number of retrievable units: 236663 (Maximum set to 50)
+#> ✓ Total number of retrievable units: 236663 (Maximum set to 100)
 #> 
 #> Retrieved 0 documents
+#> Retrieved 50 documents
 #> Done
-#> ✓ Successfully retrieved 50 documents
+#> ✓ Successfully retrieved 100 documents
 #> Done
-#> Rows: 50
+#> Rows: 100
 #> Columns: 16
 #> $ id                   <chr> "237635", "237626", "237622", "237619", "237611",…
 #> $ drucksachetyp        <chr> "Antwort", "Antwort", "Antwort", "Antwort", "Antw…
@@ -451,15 +469,16 @@ tidybt_vorgang(plenarprotokoll = 908, api_token = api_token) %>%
 ### zuordnung
 
 ``` r
-tidybt_plenarprotokoll(n_max = 50, zuordnung = "BT", api_token = api_token) %>%
+tidybt_plenarprotokoll(n_max = 100, zuordnung = "BT", api_token = api_token) %>%
   dplyr::glimpse()
-#> ✓ Total number of retrievable units: 4361 (Maximum set to 50)
+#> ✓ Total number of retrievable units: 4361 (Maximum set to 100)
 #> 
 #> Retrieved 0 documents
+#> Retrieved 50 documents
 #> Done
-#> ✓ Successfully retrieved 50 documents
+#> ✓ Successfully retrieved 100 documents
 #> Done
-#> Rows: 50
+#> Rows: 100
 #> Columns: 11
 #> $ id                   <chr> "5425", "5424", "5423", "5421", "5420", "5419", "…
 #> $ dokumentart          <chr> "Plenarprotokoll", "Plenarprotokoll", "Plenarprot…
