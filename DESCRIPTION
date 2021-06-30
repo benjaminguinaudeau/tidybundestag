@@ -22,5 +22,6 @@ Imports:
     tibble,
     cli,
     glue, 
-    httr
+    httr,
+    stringr
     
