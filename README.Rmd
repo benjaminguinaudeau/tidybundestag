@@ -41,20 +41,33 @@ You can install the latest version of tidybundestag from Github with
 remotes::install_github("benjaminguinaudeau/tidybundestag")
 ```
 
-## Example
+## Api Key
 
-Before accessing the data, you need to obtain an [API-Key](https://dip.bundestag.de/%C3%BCber-dip/hilfe/api#content).
+Access to the API is controlled with an API key. To obtain this api-key please visit the Bundestag [website](https://dip.bundestag.de/%C3%BCber-dip/hilfe/api#content). 
+
+tidybundestag functions will read the API key from the environment variable `BUNDESTAG_API`. In order to add your key to your environment file, you can use the function `edit_r_environ()` from the {{usethis}}.
+
+This will open your .Renviron file in your text editor. Now, you can add the following line to it:
+
+```r
+BUNDESTAG_API="YOUR_API_KEY"
+```
+
+Save the file and restart R for the changes to take effect.
+
+Alternatively, you can provide an explicit definition of your API key with each function call using the `api_token` argument.
+
+## Example
 
 ```{r, eval = F}
 library(tidybundestag)
-api_token <- "..."
 ```
 
 
 Once you have an api-key, you can start accessing data:
 
 ```{r}
-bt_vorgang(n_max = 100, api_token = api_token) %>%
+bt_vorgang(n_max = 100) %>%
   dplyr::glimpse()
 ```
 
@@ -67,28 +80,28 @@ The API of the Bundestag proposes 8 different endpoints.
 ### Activities
 
 ```{r}
-bt_aktivitaet(n_max = 100, api_token = api_token) %>%
+bt_aktivitaet(n_max = 100) %>%
   dplyr::glimpse()
 ```
 
 ### Drucksache
 
 ```{r}
-bt_drucksache(n_max = 100, api_token = api_token) %>%
+bt_drucksache(n_max = 100) %>%
   dplyr::glimpse()
 ```
 
 ### Drucksache-Text
 
 ```{r}
-bt_drucksache_text(n_max = 20, api_token = api_token) %>%
+bt_drucksache_text(n_max = 20) %>%
   dplyr::glimpse()
 ```
 
 ### Person
 
 ```{r}
-bt_person(n_max = 20, api_token = api_token) %>%
+bt_person(n_max = 20) %>%
   dplyr::glimpse()
 ```
 
@@ -96,28 +109,28 @@ bt_person(n_max = 20, api_token = api_token) %>%
 ### Plenarprotokoll
 
 ```{r}
-bt_plenarprotokoll(n_max = 100, api_token = api_token) %>%
+bt_plenarprotokoll(n_max = 100) %>%
   dplyr::glimpse()
 ```
 
 ### Text of plenarprotokoll
 
 ```{r}
-bt_plenarprotokoll_text(n_max = 20, api_token = api_token) %>%
+bt_plenarprotokoll_text(n_max = 20) %>%
   dplyr::glimpse()
 ```
 
 ### Vorgang
 
 ```{r}
-bt_vorgang(n_max = 100, api_token = api_token) %>%
+bt_vorgang(n_max = 100) %>%
   dplyr::glimpse()
 ```
 
 ### Vorgangsposition
 
 ```{r}
-bt_vorgangsposition(n_max = 100, api_token = api_token) %>%
+bt_vorgangsposition(n_max = 100) %>%
   dplyr::glimpse()
 ```
 
@@ -135,20 +148,20 @@ bt_vorgangsposition(n_max = 100, api_token = api_token) %>%
 ### id
 
 ```{r}
-bt_vorgang(id = "279665", api_token = api_token)
+bt_vorgang(id = "279665")
 ```
 
 ### start_date
 
 ```{r}
-bt_vorgang(n_max = 100, start_date = "2021-01-01", api_token = api_token) %>%
+bt_vorgang(n_max = 100, start_date = "2021-01-01") %>%
   dplyr::glimpse()
 ```
 
 ### end_date
 
 ```{r}
-bt_drucksache(n_max = 100, end_date = "2020-01-01", api_token = api_token) %>%
+bt_drucksache(n_max = 100, end_date = "2020-01-01") %>%
   dplyr::glimpse()
 ```
 
@@ -157,14 +170,14 @@ bt_drucksache(n_max = 100, end_date = "2020-01-01", api_token = api_token) %>%
 ### drucksache
 
 ```{r}
-bt_vorgang(drucksache = 68852, api_token = api_token) %>%
+bt_vorgang(drucksache = 68852) %>%
   dplyr::glimpse()
 ```
 
 ### plenarprotokoll
 
 ```{r}
-bt_vorgang(plenarprotokoll = 908, api_token = api_token) %>%
+bt_vorgang(plenarprotokoll = 908) %>%
   dplyr::glimpse()
 ```
 
@@ -172,14 +185,14 @@ bt_vorgang(plenarprotokoll = 908, api_token = api_token) %>%
 ### zuordnung
 
 ```{r}
-bt_plenarprotokoll(n_max = 100, zuordnung = "BT", api_token = api_token) %>%
+bt_plenarprotokoll(n_max = 100, zuordnung = "BT") %>%
   dplyr::glimpse()
 ```
 
 ## Unnest list-columns
 
 ```{r}
-members <- bt_person(n_max = 200, api_token = api_token) %>%
+members <- bt_person(n_max = 200) %>%
   dplyr::glimpse()
 
 roles <- members %>%

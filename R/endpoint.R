@@ -14,7 +14,7 @@
 #' bt_vorgang(n_max = 200, api_token)
 #' }
 #' @export
-bt_vorgang <- function(n_max = 100, api_token,
+bt_vorgang <- function(n_max = 100, api_token = NULL,
                        id = NULL,
                        start_date = NULL, end_date = NULL, drucksache = NULL,
                        plenarprotokoll = NULL,
@@ -44,7 +44,7 @@ bt_vorgang <- function(n_max = 100, api_token,
 #' bt_vorgangsposition(n_max = 200, api_token)
 #' }
 #' @export
-bt_vorgangsposition <- function(n_max = 100, api_token,
+bt_vorgangsposition <- function(n_max = 100, api_token = NULL,
                                 id = NULL,
                                 start_date = NULL, end_date = NULL, drucksache = NULL,
                                 plenarprotokoll = NULL, vorgang = NULL,
@@ -74,7 +74,7 @@ bt_vorgangsposition <- function(n_max = 100, api_token,
 #' bt_aktivitaet(n_max = 200, api_token)
 #' }
 #' @export
-bt_aktivitaet <- function(n_max = 100, api_token,
+bt_aktivitaet <- function(n_max = 100, api_token = NULL,
                           id = NULL,
                           start_date = NULL, end_date = NULL, drucksache = NULL,
                           plenarprotokoll = NULL, vorgang = NULL,
@@ -103,7 +103,7 @@ bt_aktivitaet <- function(n_max = 100, api_token,
 #' bt_drucksache(n_max = 200, api_token)
 #' }
 #' @export
-bt_drucksache <- function(n_max = 100, api_token,
+bt_drucksache <- function(n_max = 100, api_token = NULL,
                           id = NULL,
                           start_date = NULL, end_date = NULL,
                           plenarprotokoll = NULL, vorgang = NULL,
@@ -132,7 +132,7 @@ bt_drucksache <- function(n_max = 100, api_token,
 #' bt_drucksache_text(n_max = 200, api_token)
 #' }
 #' @export
-bt_drucksache_text <- function(n_max = 100, api_token,
+bt_drucksache_text <- function(n_max = 100, api_token = NULL,
                                id = NULL,
                                start_date = NULL, end_date = NULL,
                                plenarprotokoll = NULL, vorgang = NULL,
@@ -162,7 +162,7 @@ bt_drucksache_text <- function(n_max = 100, api_token,
 #' bt_person(n_max = 200, api_token)
 #' }
 #' @export
-bt_person <- function(n_max = 100, api_token,
+bt_person <- function(n_max = 100, api_token = NULL,
                       id = NULL,
                       start_date = NULL, end_date = NULL, drucksache = NULL,
                       plenarprotokoll = NULL, vorgang = NULL,
@@ -191,7 +191,7 @@ bt_person <- function(n_max = 100, api_token,
 #' bt_plenarprotokoll(n_max = 200, api_token)
 #' }
 #' @export
-bt_plenarprotokoll <- function(n_max = 100, api_token,
+bt_plenarprotokoll <- function(n_max = 100, api_token = NULL,
                                id = NULL,
                                start_date = NULL, end_date = NULL, drucksache = NULL,
                                vorgang = NULL,
@@ -219,7 +219,7 @@ bt_plenarprotokoll <- function(n_max = 100, api_token,
 #' bt_plenarprotokoll_text(n_max = 200, api_token)
 #' }
 #' @export
-bt_plenarprotokoll_text <- function(n_max = 100, api_token,
+bt_plenarprotokoll_text <- function(n_max = 100, api_token = NULL,
                                     id = NULL,
                                     start_date = NULL, end_date = NULL, drucksache = NULL,
                                     vorgang = NULL,

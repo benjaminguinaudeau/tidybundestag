@@ -6,7 +6,7 @@
 \usage{
 bt_person(
   n_max = 100,
-  api_token,
+  api_token = NULL,
   id = NULL,
   start_date = NULL,
   end_date = NULL,

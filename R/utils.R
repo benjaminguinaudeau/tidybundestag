@@ -49,7 +49,11 @@ shape_url <- function(type,
 }
 
 
-get_documents <- function(type = "vorgang", n_max = 200, api_token, ...){
+get_documents <- function(type = "vorgang", n_max = 200, api_token = NULL, ...){
+
+  if(is.null(api_token)){
+    api_token <- bundestag_key()
+  }
 
   keep_searching <- T
   last_cursor <- ""
@@ -101,5 +105,11 @@ get_documents <- function(type = "vorgang", n_max = 200, api_token, ...){
   return(final)
 }
 
-
+bundestag_key <- function() {
+  key <- Sys.getenv("BUNDESTAG_API")
+  if (key == "") {
+    stop("API key not found. Please make sure you provided the key or set the environment variable 'BUNDESTAG_API'")
+  }
+  key
+}
 
