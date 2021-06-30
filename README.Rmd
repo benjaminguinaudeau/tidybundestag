@@ -137,12 +137,12 @@ bt_vorgangsposition(n_max = 100) %>%
 ## Query Parameter
 
 + id: id of the desired unit
-+ start_date: First day of the desired period (character with YYYY/MM/DD)
-+ end_date: Last day of the desired period (character with YYYY/MM/DD)
++ start_date: First day of the desired period (character string YYYY/MM/DD)
++ end_date: Last day of the desired period (character string YYYY/MM/DD)
 + drucksache: Drucksache number of the desired unit
 + plenarprotokoll: Id of a plenary protocol related to the desired unit
 + vorgang: Id of a process related to the desired unit 
-+ zuordnung: Attribution to a given institution (one of `c('BT', 'BR', 'BV', 'EK'))
++ zuordnung: Attribution to a given institution (one of `c('BT', 'BR', 'BV', 'EK')`)
 
 
 ### id

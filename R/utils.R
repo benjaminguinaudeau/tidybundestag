@@ -61,7 +61,10 @@ get_documents <- function(type = "vorgang", n_max = 200, api_token = NULL, ...){
   documents <- list()
   n_total <- 0
 
-  url <- base_url <- shape_url(type = type, api_token = api_token, ...)
+  url <- base_url <- shape_url(type = type, api_token = api_token,
+                               # start_date, end_date,
+                               ...)
+
 
 
   while(keep_searching){
@@ -69,9 +72,11 @@ get_documents <- function(type = "vorgang", n_max = 200, api_token = NULL, ...){
     req <- httr::GET(url)
     out <- httr::content(req)
     if(req$status_code != 200){
+      print(url)
       if(req$status_code == 401) message("You API key seems wrong. Please verify it.")
       if(req$status_code == 500) message("The query parameters you provided were incorrect. Please check.")
-      stop(glue::glue("[{req$status_code}] - {out$message}"))
+      warning(glue::glue("[{req$status_code}] - {out$message}"))
+      break
     }
 
     if(index == 1){
@@ -89,8 +94,9 @@ get_documents <- function(type = "vorgang", n_max = 200, api_token = NULL, ...){
       cli::cli_status_update(id, "Done")
       keep_searching <- F
     } else {
-      last_cursor <- out$cursor
-      url <- glue::glue("{base_url}&cursor={out$cursor}")
+      last_cursor <- stringr::str_replace_all(out$cursor, "\\+", "%2b")
+      url <- glue::glue("{base_url}&cursor={last_cursor}")
+
     }
 
 
