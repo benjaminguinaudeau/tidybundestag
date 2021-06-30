@@ -72,7 +72,7 @@ get_documents <- function(type = "vorgang", n_max = 200, api_token = NULL, ...){
     req <- httr::GET(url)
     out <- httr::content(req)
     if(req$status_code != 200){
-      print(url)
+      # print(url)
       if(req$status_code == 401) message("You API key seems wrong. Please verify it.")
       if(req$status_code == 500) message("The query parameters you provided were incorrect. Please check.")
       warning(glue::glue("[{req$status_code}] - {out$message}"))
