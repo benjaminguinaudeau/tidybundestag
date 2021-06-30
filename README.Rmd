@@ -54,7 +54,7 @@ api_token <- "..."
 Once you have an api-key, you can start accessing data:
 
 ```{r}
-tidybt_vorgang(n_max = 100, api_token = api_token) %>%
+bt_vorgang(n_max = 100, api_token = api_token) %>%
   dplyr::glimpse()
 ```
 
@@ -67,28 +67,28 @@ The API of the Bundestag proposes 8 different endpoints.
 ### Activities
 
 ```{r}
-tidybt_aktivitaet(n_max = 100, api_token = api_token) %>%
+bt_aktivitaet(n_max = 100, api_token = api_token) %>%
   dplyr::glimpse()
 ```
 
 ### Drucksache
 
 ```{r}
-tidybt_drucksache(n_max = 100, api_token = api_token) %>%
+bt_drucksache(n_max = 100, api_token = api_token) %>%
   dplyr::glimpse()
 ```
 
 ### Drucksache-Text
 
 ```{r}
-tidybt_drucksache_text(n_max = 20, api_token = api_token) %>%
+bt_drucksache_text(n_max = 20, api_token = api_token) %>%
   dplyr::glimpse()
 ```
 
 ### Person
 
 ```{r}
-tidybt_person(n_max = 20, api_token = api_token) %>%
+bt_person(n_max = 20, api_token = api_token) %>%
   dplyr::glimpse()
 ```
 
@@ -96,28 +96,28 @@ tidybt_person(n_max = 20, api_token = api_token) %>%
 ### Plenarprotokoll
 
 ```{r}
-tidybt_plenarprotokoll(n_max = 100, api_token = api_token) %>%
+bt_plenarprotokoll(n_max = 100, api_token = api_token) %>%
   dplyr::glimpse()
 ```
 
 ### Text of plenarprotokoll
 
 ```{r}
-tidybt_plenarprotokoll_text(n_max = 20, api_token = api_token) %>%
+bt_plenarprotokoll_text(n_max = 20, api_token = api_token) %>%
   dplyr::glimpse()
 ```
 
 ### Vorgang
 
 ```{r}
-tidybt_vorgang(n_max = 100, api_token = api_token) %>%
+bt_vorgang(n_max = 100, api_token = api_token) %>%
   dplyr::glimpse()
 ```
 
 ### Vorgangsposition
 
 ```{r}
-tidybt_vorgangsposition(n_max = 100, api_token = api_token) %>%
+bt_vorgangsposition(n_max = 100, api_token = api_token) %>%
   dplyr::glimpse()
 ```
 
@@ -135,20 +135,20 @@ tidybt_vorgangsposition(n_max = 100, api_token = api_token) %>%
 ### id
 
 ```{r}
-tidybt_vorgang(id = "279665", api_token = api_token)
+bt_vorgang(id = "279665", api_token = api_token)
 ```
 
 ### start_date
 
 ```{r}
-tidybt_vorgang(n_max = 100, start_date = "2021-01-01", api_token = api_token) %>%
+bt_vorgang(n_max = 100, start_date = "2021-01-01", api_token = api_token) %>%
   dplyr::glimpse()
 ```
 
 ### end_date
 
 ```{r}
-tidybt_drucksache(n_max = 100, end_date = "2020-01-01", api_token = api_token) %>%
+bt_drucksache(n_max = 100, end_date = "2020-01-01", api_token = api_token) %>%
   dplyr::glimpse()
 ```
 
@@ -157,14 +157,14 @@ tidybt_drucksache(n_max = 100, end_date = "2020-01-01", api_token = api_token) %
 ### drucksache
 
 ```{r}
-tidybt_vorgang(drucksache = 68852, api_token = api_token) %>%
+bt_vorgang(drucksache = 68852, api_token = api_token) %>%
   dplyr::glimpse()
 ```
 
 ### plenarprotokoll
 
 ```{r}
-tidybt_vorgang(plenarprotokoll = 908, api_token = api_token) %>%
+bt_vorgang(plenarprotokoll = 908, api_token = api_token) %>%
   dplyr::glimpse()
 ```
 
@@ -172,14 +172,14 @@ tidybt_vorgang(plenarprotokoll = 908, api_token = api_token) %>%
 ### zuordnung
 
 ```{r}
-tidybt_plenarprotokoll(n_max = 100, zuordnung = "BT", api_token = api_token) %>%
+bt_plenarprotokoll(n_max = 100, zuordnung = "BT", api_token = api_token) %>%
   dplyr::glimpse()
 ```
 
 ## Unnest list-columns
 
 ```{r}
-members <- tidybt_person(n_max = 200, api_token = api_token) %>%
+members <- bt_person(n_max = 200, api_token = api_token) %>%
   dplyr::glimpse()
 
 roles <- members %>%

@@ -8,10 +8,19 @@ Authors@R:
            email = "bguinaudeau@gmail.com",
            comment = c(ORCID = "0000-0001-7206-6875"))
 Description: Tidybundestag can be used to query metadata and text of official documents published by the Bundestag.
+URL: https://github.com/benjaminguinaudeau/tidybundestag
+BugReports: https://github.com/benjaminguinaudeau/tidybundestag
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports: 
-    magrittr
+    magrittr,
+    purrr, 
+    dplyr, 
+    tibble,
+    cli,
+    glue, 
+    httr
+    

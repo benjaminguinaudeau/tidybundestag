@@ -40,7 +40,7 @@ api_token <- "..."
 Once you have an api-key, you can start accessing data:
 
 ``` r
-tidybt_vorgang(n_max = 100, api_token = api_token) %>%
+bt_vorgang(n_max = 100, api_token = api_token) %>%
   dplyr::glimpse()
 #> ✓ Total number of retrievable units: 277990 (Maximum set to 100)
 #> 
@@ -81,9 +81,9 @@ that can be easily handled with
 ### Activities
 
 ``` r
-tidybt_aktivitaet(n_max = 100, api_token = api_token) %>%
+bt_aktivitaet(n_max = 100, api_token = api_token) %>%
   dplyr::glimpse()
-#> ✓ Total number of retrievable units: 1545522 (Maximum set to 100)
+#> ✓ Total number of retrievable units: 1545530 (Maximum set to 100)
 #> 
 #> Retrieved 0 documents
 #> Retrieved 50 documents
@@ -107,9 +107,9 @@ tidybt_aktivitaet(n_max = 100, api_token = api_token) %>%
 ### Drucksache
 
 ``` r
-tidybt_drucksache(n_max = 100, api_token = api_token) %>%
+bt_drucksache(n_max = 100, api_token = api_token) %>%
   dplyr::glimpse()
-#> ✓ Total number of retrievable units: 255059 (Maximum set to 100)
+#> ✓ Total number of retrievable units: 255058 (Maximum set to 100)
 #> 
 #> Retrieved 0 documents
 #> Retrieved 50 documents
@@ -139,9 +139,9 @@ tidybt_drucksache(n_max = 100, api_token = api_token) %>%
 ### Drucksache-Text
 
 ``` r
-tidybt_drucksache_text(n_max = 20, api_token = api_token) %>%
+bt_drucksache_text(n_max = 20, api_token = api_token) %>%
   dplyr::glimpse()
-#> ✓ Total number of retrievable units: 255059 (Maximum set to 20)
+#> ✓ Total number of retrievable units: 255058 (Maximum set to 20)
 #> 
 #> Retrieved 0 documents
 #> Retrieved 10 documents
@@ -170,7 +170,7 @@ tidybt_drucksache_text(n_max = 20, api_token = api_token) %>%
 ### Person
 
 ``` r
-tidybt_person(n_max = 20, api_token = api_token) %>%
+bt_person(n_max = 20, api_token = api_token) %>%
   dplyr::glimpse()
 #> ✓ Total number of retrievable units: 4969 (Maximum set to 20)
 #> 
@@ -194,7 +194,7 @@ tidybt_person(n_max = 20, api_token = api_token) %>%
 ### Plenarprotokoll
 
 ``` r
-tidybt_plenarprotokoll(n_max = 100, api_token = api_token) %>%
+bt_plenarprotokoll(n_max = 100, api_token = api_token) %>%
   dplyr::glimpse()
 #> ✓ Total number of retrievable units: 5416 (Maximum set to 100)
 #> 
@@ -222,7 +222,7 @@ tidybt_plenarprotokoll(n_max = 100, api_token = api_token) %>%
 ### Text of plenarprotokoll
 
 ``` r
-tidybt_plenarprotokoll_text(n_max = 20, api_token = api_token) %>%
+bt_plenarprotokoll_text(n_max = 20, api_token = api_token) %>%
   dplyr::glimpse()
 #> ✓ Total number of retrievable units: 5416 (Maximum set to 20)
 #> 
@@ -249,7 +249,7 @@ tidybt_plenarprotokoll_text(n_max = 20, api_token = api_token) %>%
 ### Vorgang
 
 ``` r
-tidybt_vorgang(n_max = 100, api_token = api_token) %>%
+bt_vorgang(n_max = 100, api_token = api_token) %>%
   dplyr::glimpse()
 #> ✓ Total number of retrievable units: 277990 (Maximum set to 100)
 #> 
@@ -280,7 +280,7 @@ tidybt_vorgang(n_max = 100, api_token = api_token) %>%
 ### Vorgangsposition
 
 ``` r
-tidybt_vorgangsposition(n_max = 100, api_token = api_token) %>%
+bt_vorgangsposition(n_max = 100, api_token = api_token) %>%
   dplyr::glimpse()
 #> ✓ Total number of retrievable units: 595342 (Maximum set to 100)
 #> 
@@ -331,8 +331,8 @@ tidybt_vorgangsposition(n_max = 100, api_token = api_token) %>%
 ### id
 
 ``` r
-tidybt_vorgang(id = "279665", api_token = api_token)
-#> ✓ Total number of retrievable units: 1 (Maximum set to 200)
+bt_vorgang(id = "279665", api_token = api_token)
+#> ✓ Total number of retrievable units: 1 (Maximum set to 100)
 #> 
 #> Retrieved 0 documents
 #> Retrieved 1 documents
@@ -350,7 +350,7 @@ tidybt_vorgang(id = "279665", api_token = api_token)
 ### start\_date
 
 ``` r
-tidybt_vorgang(n_max = 100, start_date = "2021-01-01", api_token = api_token) %>%
+bt_vorgang(n_max = 100, start_date = "2021-01-01", api_token = api_token) %>%
   dplyr::glimpse()
 #> ✓ Total number of retrievable units: 8593 (Maximum set to 100)
 #> 
@@ -381,7 +381,7 @@ tidybt_vorgang(n_max = 100, start_date = "2021-01-01", api_token = api_token) %>
 ### end\_date
 
 ``` r
-tidybt_drucksache(n_max = 100, end_date = "2020-01-01", api_token = api_token) %>%
+bt_drucksache(n_max = 100, end_date = "2020-01-01", api_token = api_token) %>%
   dplyr::glimpse()
 #> ✓ Total number of retrievable units: 236663 (Maximum set to 100)
 #> 
@@ -413,9 +413,9 @@ tidybt_drucksache(n_max = 100, end_date = "2020-01-01", api_token = api_token) %
 ### drucksache
 
 ``` r
-tidybt_vorgang(drucksache = 68852, api_token = api_token) %>%
+bt_vorgang(drucksache = 68852, api_token = api_token) %>%
   dplyr::glimpse()
-#> ✓ Total number of retrievable units: 1 (Maximum set to 200)
+#> ✓ Total number of retrievable units: 1 (Maximum set to 100)
 #> 
 #> Retrieved 0 documents
 #> Retrieved 1 documents
@@ -441,9 +441,9 @@ tidybt_vorgang(drucksache = 68852, api_token = api_token) %>%
 ### plenarprotokoll
 
 ``` r
-tidybt_vorgang(plenarprotokoll = 908, api_token = api_token) %>%
+bt_vorgang(plenarprotokoll = 908, api_token = api_token) %>%
   dplyr::glimpse()
-#> ✓ Total number of retrievable units: 6 (Maximum set to 200)
+#> ✓ Total number of retrievable units: 6 (Maximum set to 100)
 #> 
 #> Retrieved 0 documents
 #> Retrieved 6 documents
@@ -469,7 +469,7 @@ tidybt_vorgang(plenarprotokoll = 908, api_token = api_token) %>%
 ### zuordnung
 
 ``` r
-tidybt_plenarprotokoll(n_max = 100, zuordnung = "BT", api_token = api_token) %>%
+bt_plenarprotokoll(n_max = 100, zuordnung = "BT", api_token = api_token) %>%
   dplyr::glimpse()
 #> ✓ Total number of retrievable units: 4361 (Maximum set to 100)
 #> 
@@ -496,7 +496,7 @@ tidybt_plenarprotokoll(n_max = 100, zuordnung = "BT", api_token = api_token) %>%
 ## Unnest list-columns
 
 ``` r
-members <- tidybt_person(n_max = 200, api_token = api_token) %>%
+members <- bt_person(n_max = 200, api_token = api_token) %>%
   dplyr::glimpse()
 #> ✓ Total number of retrievable units: 4969 (Maximum set to 200)
 #> 
