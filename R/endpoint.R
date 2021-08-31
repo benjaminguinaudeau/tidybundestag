@@ -14,13 +14,13 @@
 #' bt_vorgang(n_max = 200, api_token)
 #' }
 #' @export
-bt_vorgang <- function(n_max = 100, api_token = NULL,
+bt_vorgang <- function(n_max = 100, api_token = NULL, quiet = F,
                        id = NULL,
                        start_date = NULL, end_date = NULL, drucksache = NULL,
                        plenarprotokoll = NULL,
                        zuordnung = NULL){
 
-  get_documents(type = "vorgang", n_max = n_max, api_token = api_token,
+  get_documents(type = "vorgang", n_max = n_max, api_token = api_token, quiet = quiet,
                 id = id,
                 start_date = start_date, end_date = end_date, drucksache = drucksache,
                 plenarprotokoll = plenarprotokoll,
@@ -44,13 +44,13 @@ bt_vorgang <- function(n_max = 100, api_token = NULL,
 #' bt_vorgangsposition(n_max = 200, api_token)
 #' }
 #' @export
-bt_vorgangsposition <- function(n_max = 100, api_token = NULL,
+bt_vorgangsposition <- function(n_max = 100, api_token = NULL, quiet = F,
                                 id = NULL,
                                 start_date = NULL, end_date = NULL, drucksache = NULL,
                                 plenarprotokoll = NULL, vorgang = NULL,
                                 zuordnung = NULL){
 
-  get_documents(type = "vorgangsposition", n_max = n_max, api_token = api_token,
+  get_documents(type = "vorgangsposition", n_max = n_max, api_token = api_token, quiet = quiet,
                 id = id,
                 start_date = start_date, end_date = end_date, drucksache = drucksache,
                 plenarprotokoll = plenarprotokoll, vorgang = vorgang,
@@ -74,13 +74,13 @@ bt_vorgangsposition <- function(n_max = 100, api_token = NULL,
 #' bt_aktivitaet(n_max = 200, api_token)
 #' }
 #' @export
-bt_aktivitaet <- function(n_max = 100, api_token = NULL,
+bt_aktivitaet <- function(n_max = 100, api_token = NULL, quiet = F,
                           id = NULL,
                           start_date = NULL, end_date = NULL, drucksache = NULL,
                           plenarprotokoll = NULL, vorgang = NULL,
                           zuordnung = NULL){
 
-  get_documents(type = "aktivitaet", n_max = n_max, api_token = api_token,
+  get_documents(type = "aktivitaet", n_max = n_max, api_token = api_token, quiet = quiet,
                 id = id,
                 start_date = start_date, end_date = end_date, drucksache = drucksache,
                 plenarprotokoll = plenarprotokoll, vorgang = vorgang,
@@ -103,13 +103,13 @@ bt_aktivitaet <- function(n_max = 100, api_token = NULL,
 #' bt_drucksache(n_max = 200, api_token)
 #' }
 #' @export
-bt_drucksache <- function(n_max = 100, api_token = NULL,
+bt_drucksache <- function(n_max = 100, api_token = NULL, quiet = F,
                           id = NULL,
                           start_date = NULL, end_date = NULL,
                           plenarprotokoll = NULL, vorgang = NULL,
                           zuordnung = NULL){
 
-  get_documents(type = "drucksache", n_max = n_max, api_token = api_token,
+  get_documents(type = "drucksache", n_max = n_max, api_token = api_token, quiet = quiet,
                 id = id,
                 start_date = start_date, end_date = end_date,
                 plenarprotokoll = plenarprotokoll, vorgang = vorgang,
@@ -132,13 +132,13 @@ bt_drucksache <- function(n_max = 100, api_token = NULL,
 #' bt_drucksache_text(n_max = 200, api_token)
 #' }
 #' @export
-bt_drucksache_text <- function(n_max = 100, api_token = NULL,
+bt_drucksache_text <- function(n_max = 100, api_token = NULL, quiet = F,
                                id = NULL,
                                start_date = NULL, end_date = NULL,
                                plenarprotokoll = NULL, vorgang = NULL,
                                zuordnung = NULL){
 
-  get_documents(type = "drucksache-text", n_max = n_max, api_token = api_token,
+  get_documents(type = "drucksache-text", n_max = n_max, api_token = api_token, quiet = quiet,
                 id = id,
                 start_date = start_date, end_date = end_date,
                 plenarprotokoll = plenarprotokoll, vorgang = vorgang,
@@ -162,13 +162,13 @@ bt_drucksache_text <- function(n_max = 100, api_token = NULL,
 #' bt_person(n_max = 200, api_token)
 #' }
 #' @export
-bt_person <- function(n_max = 100, api_token = NULL,
+bt_person <- function(n_max = 100, api_token = NULL, quiet = F,
                       id = NULL,
                       start_date = NULL, end_date = NULL, drucksache = NULL,
                       plenarprotokoll = NULL, vorgang = NULL,
                       zuordnung = NULL){
 
-  get_documents(type = "person", n_max = n_max, api_token = api_token,
+  get_documents(type = "person", n_max = n_max, api_token = api_token, quiet = quiet,
                 id = id,
                 start_date = start_date, end_date = end_date, drucksache = drucksache,
                 vorgang = vorgang,
@@ -191,13 +191,13 @@ bt_person <- function(n_max = 100, api_token = NULL,
 #' bt_plenarprotokoll(n_max = 200, api_token)
 #' }
 #' @export
-bt_plenarprotokoll <- function(n_max = 100, api_token = NULL,
+bt_plenarprotokoll <- function(n_max = 100, api_token = NULL, quiet = F,
                                id = NULL,
                                start_date = NULL, end_date = NULL, drucksache = NULL,
                                vorgang = NULL,
                                zuordnung = NULL){
 
-  get_documents(type = "plenarprotokoll", n_max = n_max, api_token = api_token,
+  get_documents(type = "plenarprotokoll", n_max = n_max, api_token = api_token, quiet = quiet,
                 id = id,
                 start_date = start_date, end_date = end_date, drucksache = drucksache,
                 vorgang = vorgang, zuordnung = zuordnung)
@@ -219,13 +219,13 @@ bt_plenarprotokoll <- function(n_max = 100, api_token = NULL,
 #' bt_plenarprotokoll_text(n_max = 200, api_token)
 #' }
 #' @export
-bt_plenarprotokoll_text <- function(n_max = 100, api_token = NULL,
+bt_plenarprotokoll_text <- function(n_max = 100, api_token = NULL, quiet = F,
                                     id = NULL,
                                     start_date = NULL, end_date = NULL, drucksache = NULL,
                                     vorgang = NULL,
                                     zuordnung = NULL){
 
-  get_documents(type = "plenarprotokoll-text", n_max = n_max, api_token = api_token,
+  get_documents(type = "plenarprotokoll-text", n_max = n_max, api_token = api_token, quiet = quiet,
                 id = id,
                 start_date = start_date, end_date = end_date, drucksache = drucksache,
                 vorgang = vorgang,

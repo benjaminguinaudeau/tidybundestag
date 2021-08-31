@@ -145,10 +145,14 @@ bt_vorgangsposition(n_max = 100) %>%
 + zuordnung: Attribution to a given institution (one of `c('BT', 'BR', 'BV', 'EK')`)
 
 
-### id
+### id (one or several)
 
 ```{r}
 bt_vorgang(id = "279665")
+```
+
+```{r}
+bt_drucksache_text(id = c("239894", "234517"))
 ```
 
 ### start_date

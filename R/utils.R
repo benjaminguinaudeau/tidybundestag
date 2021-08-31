@@ -21,7 +21,7 @@ parse_documents <- function(documents){
               purrr::imap_dfc(~tibble::tibble(!!.y := .x))
             tibble::tibble(!!.y := list(dt))
           } else if(.y %in% c("sachgebiet", "initiative", "zustimmungsbeduerftigkeit")){
-            tibble::tibble(!!.y := list(tibble::tibble(.y != .x)))
+            tibble::tibble(!!.y := list(tibble::tibble(!!.y := as.character(.x))))
           } else {
             tibble::tibble(!!.y := .x)
           }
@@ -37,7 +37,12 @@ shape_url <- function(type,
 
   url <- glue::glue("https://search.dip.bundestag.de/api/v1/{type}?")
 
-  if(!is.null(id)) url <- paste0(url, "f.id=", id, "&")
+  if(length(id) > 50){
+    warning("You provided more than 50 ids, only the first 50 will be queried")
+    id <- id[1:50]
+  }
+
+  if(!is.null(id)) url <- paste0(url, paste0("f.id=", id, "&", collapse = ""))
   if(!is.null(start_date)) url <- paste0(url, "f.datum.start=", start_date, "&")
   if(!is.null(end_date)) url <- paste0(url, "f.datum.end=", end_date, "&")
   if(!is.null(drucksache)) url <- paste0(url, "f.drucksache=", drucksache, "&")
@@ -51,7 +56,7 @@ shape_url <- function(type,
 }
 
 
-get_documents <- function(type = "vorgang", n_max = 200, api_token = NULL, ...){
+get_documents <- function(type = "vorgang", n_max = 200, api_token = NULL, quiet = F, ...){
 
   if(is.null(api_token)){
     api_token <- bundestag_key()
@@ -81,11 +86,13 @@ get_documents <- function(type = "vorgang", n_max = 200, api_token = NULL, ...){
     }
 
     if(index == 1){
-      cli::cli_alert_success("Total number of retrievable units: {out$numFound} (Maximum set to {n_max})")
-      id <- cli::cli_status("")
+      if(!quiet){
+        cli::cli_alert_success("Total number of retrievable units: {out$numFound} (Maximum set to {n_max})")
+        id <- cli::cli_status("")
+      }
     }
 
-    cli::cli_status_update(id, "Retrieved {n_total} documents")
+    if(!quiet) cli::cli_status_update(id, "Retrieved {n_total} documents")
 
     documents[[index]] <- tryCatch({
       # print(url)
@@ -99,11 +106,11 @@ get_documents <- function(type = "vorgang", n_max = 200, api_token = NULL, ...){
     n_total <- n_total + length(out$documents)
 
     if(n_total >= n_max | last_cursor == out$cursor){
-      cli::cli_status_update(id, "Done")
+      if(!quiet) cli::cli_status_update(id, "Done")
       keep_searching <- F
     } else {
-      last_cursor <- stringr::str_replace_all(out$cursor, "\\+", "%2b")
-      url <- glue::glue("{base_url}&cursor={last_cursor}")
+      last_cursor <- out$cursor
+      url <- glue::glue("{base_url}&cursor={stringr::str_replace_all(out$cursor, '\\\\+', '%2b')}")
 
     }
 
@@ -111,7 +118,7 @@ get_documents <- function(type = "vorgang", n_max = 200, api_token = NULL, ...){
     index <- index + 1
   }
 
-  cli::cli_alert_success("Successfully retrieved {n_total} documents")
+  if(!quiet) cli::cli_alert_success("Successfully retrieved {n_total} documents")
 
   final <- documents %>%
     purrr::reduce(dplyr::bind_rows)

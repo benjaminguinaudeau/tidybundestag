@@ -299,7 +299,7 @@ bt_vorgang(n_max = 100) %>%
 ``` r
 bt_vorgangsposition(n_max = 100) %>%
   dplyr::glimpse()
-#> ✓ Total number of retrievable units: 595558 (Maximum set to 100)
+#> ✓ Total number of retrievable units: 595562 (Maximum set to 100)
 #> 
 #> Retrieved 0 documents
 #> Retrieved 50 documents
@@ -345,7 +345,7 @@ bt_vorgangsposition(n_max = 100) %>%
 -   zuordnung: Attribution to a given institution (one of
     `c('BT', 'BR', 'BV', 'EK')`)
 
-### id
+### id (one or several)
 
 ``` r
 bt_vorgang(id = "279665")
@@ -362,6 +362,25 @@ bt_vorgang(id = "279665")
 #> 1 279665 Noch nicht beraten Gesetzgebung O009  <tibble [1 × … Vorga…          19
 #> # … with 5 more variables: zustimmungsbeduerftigkeit <list>, initiative <list>,
 #> #   datum <chr>, titel <chr>, deskriptor <list>
+```
+
+``` r
+bt_drucksache_text(id = c("239894", "234517"))
+#> ✓ Total number of retrievable units: 2 (Maximum set to 100)
+#> 
+#> Retrieved 0 documents
+#> Retrieved 2 documents
+#> Done
+#> ✓ Successfully retrieved 2 documents
+#> Done
+#> # A tibble: 2 x 15
+#>   id     drucksachetyp  dokumentart autoren_anzahl typ      dokumentnummer
+#>   <chr>  <chr>          <chr>                <int> <chr>    <chr>         
+#> 1 239894 Antwort        Drucksache               0 Dokument 19/18195      
+#> 2 234517 Kleine Anfrage Drucksache              15 Dokument 19/13776      
+#> # … with 9 more variables: wahlperiode <int>, herausgeber <chr>, datum <chr>,
+#> #   titel <chr>, text <chr>, fundstelle <list>, ressort <list>, urheber <list>,
+#> #   autoren_anzeige <list>
 ```
 
 ### start\_date
@@ -571,4 +590,4 @@ roles %>%
   ggplot2::coord_flip()
 ```
 
-<img src="man/figures/README-unnamed-chunk-19-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-20-1.png" width="100%" />
