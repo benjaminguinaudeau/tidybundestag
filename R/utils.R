@@ -42,12 +42,17 @@ shape_url <- function(type,
     id <- id[1:50]
   }
 
+  if(length(vorgang) > 50){
+    warning("You provided more than 50 vorgang_ids, only the first 50 will be queried")
+    vorgang <- vorgang[1:50]
+  }
+
   if(!is.null(id)) url <- paste0(url, paste0("f.id=", id, "&", collapse = ""))
   if(!is.null(start_date)) url <- paste0(url, "f.datum.start=", start_date, "&")
   if(!is.null(end_date)) url <- paste0(url, "f.datum.end=", end_date, "&")
   if(!is.null(drucksache)) url <- paste0(url, "f.drucksache=", drucksache, "&")
   if(!is.null(plenarprotokoll)) url <- paste0(url, "f.plenarprotokoll=", plenarprotokoll, "&")
-  if(!is.null(vorgang)) url <- paste0(url, "f.vorgang=", vorgang, "&")
+  if(!is.null(vorgang)) url <- paste0(url, paste0("f.vorgang=", vorgang, "&", collapse = ""))
   if(!is.null(zuordnung)) url <- paste0(url, "f.zuordnung=", zuordnung, "&")
 
   url <- paste0(url, "apikey=", api_token)
