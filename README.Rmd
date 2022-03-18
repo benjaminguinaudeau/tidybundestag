@@ -31,7 +31,7 @@ It can be used to retrieve data on:
 * Plenary protocols
 * Parliamentary processes (Vorgänge)
 
-For more information on the API, please visit: [https://dip.bundestag.de/documents/informationsblatt_zur_dip_api_v01.pdf](https://dip.bundestag.de/documents/informationsblatt_zur_dip_api_v01.pdf)
+For more information on the API, please visit: [https://dip.bundestag.de/documents/informationsblatt_zur_dip_api.pdf](https://dip.bundestag.de/documents/informationsblatt_zur_dip_api.pdf)
 
 ## Installation
 
