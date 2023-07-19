@@ -77,8 +77,6 @@ get_documents <- function(type = "vorgang", n_max = 200, api_token = NULL, quiet
                                # start_date, end_date,
                                ...)
 
-
-
   while(keep_searching){
 
     req <- httr::GET(url)
@@ -86,6 +84,8 @@ get_documents <- function(type = "vorgang", n_max = 200, api_token = NULL, quiet
     if(req$status_code != 200){
       if(req$status_code == 401) message("You API key seems wrong. Please verify it.")
       if(req$status_code == 500) message("The query parameters you provided were incorrect. Please check.")
+      if(req$status_code == 503) message("Service unavailable")
+      if(is.null(out[["message"]])) out[["message"]] <- ""
       warning(glue::glue("[{req$status_code}] - {out$message}"))
       break
     }
@@ -123,12 +123,16 @@ get_documents <- function(type = "vorgang", n_max = 200, api_token = NULL, quiet
     index <- index + 1
   }
 
-  if(!quiet) cli::cli_alert_success("Successfully retrieved {n_total} documents")
+  if(n_total == 0){
+    if(!quiet) cli::cli_alert_success("Unable to retrieve documents")
+  } else {
+    if(!quiet) cli::cli_alert_success("Successfully retrieved {n_total} documents")
+    final <- documents %>%
+      purrr::reduce(dplyr::bind_rows)
 
-  final <- documents %>%
-    purrr::reduce(dplyr::bind_rows)
+    return(final)
+  }
 
-  return(final)
 }
 
 bundestag_key <- function() {
