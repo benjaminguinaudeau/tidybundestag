@@ -2,8 +2,8 @@
 #' @param n_max Maximum of units, that will be retrieved
 #' @param api_token Api key as provided by the bundestag service. More info on https://dip.bundestag.de/%C3%BCber-dip/hilfe/api
 #' @param id Id of the desired "vorgang"
-#' @param start_date Start of the desired period (format is YYYY/MM/DD)
-#' @param end_date End of the desired period (format is YYYY/MM/DD)
+#' @param start_date Start of the desired period (format is "YYYY-MM-DD")
+#' @param end_date End of the desired period (format is "YYYY-MM-DD")
 #' @param drucksache Id of drucksache related to the desired vorgang
 #' @param plenarprotokoll Id of plenarprotokoll related to the desired vorgang
 #' @param zuordnung One of `c('BT', 'BR', 'BV', 'EK')` depending on institution issuing the desired vorgang
@@ -31,8 +31,8 @@ bt_vorgang <- function(n_max = 100, api_token = NULL, quiet = F,
 #' @param n_max Maximum of units, that will be retrieved
 #' @param api_token Api key as provided by the bundestag service. More info on https://dip.bundestag.de/%C3%BCber-dip/hilfe/api
 #' @param id Id of the desired "vorgangsposition"
-#' @param start_date Start of the desired period (format is YYYY/MM/DD)
-#' @param end_date End of the desired period (format is YYYY/MM/DD)
+#' @param start_date Start of the desired period (format is "YYYY-MM-DD")
+#' @param end_date End of the desired period (format is "YYYY-MM-DD")
 #' @param drucksache Id of drucksache related to the desired vorgangsposition
 #' @param plenarprotokoll Id of plenarprotokoll related to the desired vorgangsposition
 #' @param vorgang Id of vorgang related to the desired vorgangsposition
@@ -61,8 +61,8 @@ bt_vorgangsposition <- function(n_max = 100, api_token = NULL, quiet = F,
 #' @param n_max Maximum of units, that will be retrieved
 #' @param api_token Api key as provided by the bundestag service. More info on https://dip.bundestag.de/%C3%BCber-dip/hilfe/api
 #' @param id Id of the desired activity
-#' @param start_date Start of the desired period (format is YYYY/MM/DD)
-#' @param end_date End of the desired period (format is YYYY/MM/DD)
+#' @param start_date Start of the desired period (format is "YYYY-MM-DD")
+#' @param end_date End of the desired period (format is "YYYY-MM-DD")
 #' @param drucksache Id of drucksache related to the desired activity
 #' @param plenarprotokoll Id of plenarprotokoll related to the desired activity
 #' @param vorgang Id of vorgang related to the desired activity
@@ -91,8 +91,8 @@ bt_aktivitaet <- function(n_max = 100, api_token = NULL, quiet = F,
 #' @param n_max Maximum of units, that will be retrieved
 #' @param api_token Api key as provided by the bundestag service. More info on https://dip.bundestag.de/%C3%BCber-dip/hilfe/api
 #' @param id Id of the desired "drucksache"
-#' @param start_date Start of the desired period (format is YYYY/MM/DD)
-#' @param end_date End of the desired period (format is YYYY/MM/DD)
+#' @param start_date Start of the desired period (format is "YYYY-MM-DD")
+#' @param end_date End of the desired period (format is "YYYY-MM-DD")
 #' @param plenarprotokoll Id of plenarprotokoll related to the desired drucksache
 #' @param vorgang Id of vorgang related to the desired drucksache
 #' @param zuordnung One of `c('BT', 'BR', 'BV', 'EK')` depending on institution issuing the desired drucksache
@@ -120,8 +120,8 @@ bt_drucksache <- function(n_max = 100, api_token = NULL, quiet = F,
 #' @param n_max Maximum of units, that will be retrieved
 #' @param api_token Api key as provided by the bundestag service. More info on https://dip.bundestag.de/%C3%BCber-dip/hilfe/api
 #' @param id Id of the desired "drucksache"
-#' @param start_date Start of the desired period (format is YYYY/MM/DD)
-#' @param end_date End of the desired period (format is YYYY/MM/DD)
+#' @param start_date Start of the desired period (format is "YYYY-MM-DD")
+#' @param end_date End of the desired period (format is "YYYY-MM-DD")
 #' @param plenarprotokoll Id of plenarprotokoll related to the desired drucksache
 #' @param vorgang Id of vorgang related to the desired drucksache
 #' @param zuordnung One of `c('BT', 'BR', 'BV', 'EK')` depending on institution issuing the desired drucksache
@@ -149,8 +149,8 @@ bt_drucksache_text <- function(n_max = 100, api_token = NULL, quiet = F,
 #' @param n_max Maximum of units, that will be retrieved
 #' @param api_token Api key as provided by the bundestag service. More info on https://dip.bundestag.de/%C3%BCber-dip/hilfe/api
 #' @param id Id of the desired person
-#' @param start_date Start of the desired period (format is YYYY/MM/DD)
-#' @param end_date End of the desired period (format is YYYY/MM/DD)
+#' @param start_date Start of the desired period (format is "YYYY-MM-DD")
+#' @param end_date End of the desired period (format is "YYYY-MM-DD")
 #' @param drucksache Id of drucksache related to the desired person
 #' @param plenarprotokoll Id of plenarprotokoll related to the desired person
 #' @param vorgang Id of vorgang related to the desired person
@@ -179,8 +179,8 @@ bt_person <- function(n_max = 100, api_token = NULL, quiet = F,
 #' @param n_max Maximum of units, that will be retrieved
 #' @param api_token Api key as provided by the bundestag service. More info on https://dip.bundestag.de/%C3%BCber-dip/hilfe/api
 #' @param id Id of the desired plenary protocol
-#' @param start_date Start of the desired period (format is YYYY/MM/DD)
-#' @param end_date End of the desired period (format is YYYY/MM/DD)
+#' @param start_date Start of the desired period (format is "YYYY-MM-DD")
+#' @param end_date End of the desired period (format is "YYYY-MM-DD")
 #' @param drucksache Id of drucksache related to the plenarprotokoll
 #' @param vorgang Id of vorgang related to the desired plenarprotokoll
 #' @param zuordnung One of `c('BT', 'BR', 'BV', 'EK')` depending on institution related to the desired plenarprotokoll
@@ -207,8 +207,8 @@ bt_plenarprotokoll <- function(n_max = 100, api_token = NULL, quiet = F,
 #' @param n_max Maximum of units, that will be retrieved
 #' @param api_token Api key as provided by the bundestag service. More info on https://dip.bundestag.de/%C3%BCber-dip/hilfe/api
 #' @param id Id of the desired plenary protocol
-#' @param start_date Start of the desired period (format is YYYY/MM/DD)
-#' @param end_date End of the desired period (format is YYYY/MM/DD)
+#' @param start_date Start of the desired period (format is "YYYY-MM-DD")
+#' @param end_date End of the desired period (format is "YYYY-MM-DD")
 #' @param drucksache Id of drucksache related to the plenarprotokoll
 #' @param vorgang Id of vorgang related to the desired plenarprotokoll
 #' @param zuordnung One of `c('BT', 'BR', 'BV', 'EK')` depending on institution related to the desired plenarprotokoll
